@@ -1,44 +1,45 @@
-/* General page styling */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #F5F5F0;
-  color: #333;
-}
-
-/* Container for centered content */
-.container {
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-/* Sticky top navbar styling */
+/* Sticky full-width navbar */
 .navbar {
-  background-color: #C4904D;
-  color: white;
-  padding: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3rem;
+  color: #1C1F33;
+  padding: 1rem 2rem;
   position: sticky;
   top: 0;
   z-index: 1000;
+  background-color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Heading inside navbar */
+/* Keep content centered inside the navbar */
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Same nav and link styles */
 .navbar h1 {
   margin: 0;
+  white-space: nowrap;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-/* Navigation links */
 .navbar nav {
   display: flex;
-  justify-content: left;
-  gap: 2rem;
-  margin-top: 0;
   flex-wrap: wrap;
+  gap: 2rem;
 }
 
-.navbar nav a {
-  color: white;
+.navbar a {
+  color: #C4904D;
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
@@ -46,16 +47,23 @@ body {
   transition: background-color 0.3s ease, border-radius 0.3s ease;
 }
 
-.navbar nav a:hover {
-  background-color: #003060;
+.navbar a:hover {
+  background-color: #F5F5F0;
   border-radius: 4px;
 }
 
-/* Footer styling */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: white;
+  color: #333;
+}
+
 footer {
-  background-color: #F5F5F0;
+  background-color: white;
   text-align: center;
   padding: 1rem;
   font-size: 0.9rem;
   margin-top: 2rem;
+  width: 100%;
 }
