@@ -7,6 +7,7 @@ import Collaborators from './pages/Collaborators.jsx';
 import Research from './pages/Research';
 import Opportunities from './pages/Opportunities';
 import Telemedicine from './pages/Telemedicine';
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="research" element={<Research />} />
             <Route path="opportunities" element={<Opportunities />} />
             <Route path="telemedicine" element={<Telemedicine />} />
+            <Route path="contact" element={<Contact />} />
           </Route>
         </Routes>
     </Router>

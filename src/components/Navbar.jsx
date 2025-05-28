@@ -15,6 +15,8 @@ const navLinks = [
     href: 'https://downepal.blogspot.com/',
     external: true,
   },
+  {
+    label: 'Contact Us', to: '/contact' },
 ];
 
 // Desktop navigation menu
