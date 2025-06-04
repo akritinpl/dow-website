@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
-@layer base {
+/* @layer base {
   :root {
     --color-primary: #1C1F33;
     --color-secondary: #C4904D;
-    --color-background: white;
+    --color-background: #f6f2e7;
     --color-text: #333;
     --font-display: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
-}
+} */
