@@ -1,5 +1,11 @@
+import {COLORS} from '../constants/colors';
+
 function Telemedicine() {
-  return <h2>Welcome to the Telemedicine Page</h2>;
+  return(
+    <div>
+        <h2 className = "text-center text-3xl font-semibold" style={{color: COLORS.textDark}}>Telemedicine</h2>
+    </div>
+  );
 }
 
 export default Telemedicine;
