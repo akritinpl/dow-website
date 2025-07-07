@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { COLORS } from '../constants/colors';
-import logo from '../assets/logo.svg';
+import logo from '../assets/logo-no-background.svg';
 
 // Navigation links
 const navLinks = [
@@ -21,10 +21,10 @@ function DesktopNav() {
   const location = useLocation();
 
   return (
-    <nav className="whitespace-nowrap hidden lg:flex items-center space-x-5">
+    <nav className="whitespace-nowrap hidden lg:flex items-center space-x-4">
       {navLinks.map(({ label, to, href, external }) => {
         const isActive = to && location.pathname === to;
-        const baseClasses = 'relative group text-base font-medium transition-colors duration-200 py-1 px-1 rounded-md';
+        const baseClasses = 'relative group text-base transition-colors duration-200 py-1 px-1 rounded-md';
 
         return external ? (
           <a
@@ -141,7 +141,7 @@ function Navbar() {
 
   return (
     <header
-      className="sticky top-0 z-30 w-full pt-0.5 sm:pt-1 border-b border-slate-200"
+      className="sticky top-0 z-30 w-full pt-0.5 sm:pt-1"
       style={{ backgroundColor: COLORS.background }}
     >
       <div className="w-full px-2 sm:px-4 lg:px-3">
@@ -164,7 +164,17 @@ function Navbar() {
             </div>
 
             <a href="/" className="flex items-center text-nowrap">
-              <img src={logo} alt="Logo" className="h-6 sm:h-8 md:h-10 w-auto p-1 my-1 mr-30" />
+              <img src={logo} alt="Logo" className="h-6 sm:h-8 md:h-10 w-auto p-1 my-1 mr-2" />
+              <h1
+                className="text-lg sm:text-l md:text-xl font-sans font-semibold tracking-tight mr-10"
+                style={{
+                  color: COLORS.textLight,
+                  fontFamily:
+                    'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
+                }}
+              >
+                Doctors On Wheels
+              </h1>
             </a>
 
             <DesktopNav />
@@ -176,7 +186,7 @@ function Navbar() {
               href="https://example.com/donate"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold px-4 sm:px-5 py-2 pr-4 rounded-lg hover:opacity-90 transition-colors duration-200 whitespace-nowrap"
+              className="font-sans font-bold px-4 sm:px-5 py-2 pr-4 rounded-lg hover:opacity-90 transition-colors duration-200 whitespace-nowrap"
               style={{ backgroundColor: COLORS.highlight, color: COLORS.textLight }}
             >
               Donate Now
@@ -184,7 +194,7 @@ function Navbar() {
 
             <a
               href="/signin"
-              className="border font-medium px-4 py-1.5 rounded-lg hover:bg-white transition-colors duration-200 whitespace-nowrap"
+              className="border font-sans font-medium px-4 py-1.5 rounded-lg hover:bg-white transition-colors duration-200 whitespace-nowrap"
               style={{
                 color: COLORS.textLight,
                 borderColor: '#E0E6ED',

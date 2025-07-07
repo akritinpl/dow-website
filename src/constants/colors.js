@@ -6,3 +6,4 @@ export const COLORS = {
   border: '#E0E6ED',
   highlight: '#EF9394',
 };
+

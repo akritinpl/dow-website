@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 body {
@@ -5,3 +6,4 @@ body {
   background-color:#efebe1;
   color: #333;
 }
+

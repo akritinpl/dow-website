@@ -1,11 +1,9 @@
-import COLORS from '../constants/colors';
+import {COLORS} from '../constants/colors';
 
 function Home() {
   return (
-    <section>
-      <div style = {{ backgroundColor: COLORS.primary }}>
-        <h2 className="text-center text-4xl font-semibold text-[#1C1F33] pt-4"> Doctors On Wheels: On the move, For the Community!</h2>
-      </div>
+    <section className="w-full min-h-[60vh] flex flex-col p-20" style={{ backgroundColor: '#05203d'}}>
+        <h2 className="text-center text-3xl font-semibold pt-4" style={{ color: COLORS.textLight }}>On the move, For the Community!</h2>
     </section>
   );
 }
