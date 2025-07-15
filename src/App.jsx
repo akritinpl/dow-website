@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
-import Collaborators from './pages/Collaborators.jsx';
+import Collaborators from './pages/Collaborators';
 import Research from './pages/Research';
 import Opportunities from './pages/Opportunities';
 import Telemedicine from './pages/Telemedicine';

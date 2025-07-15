@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { COLORS } from '../constants/colors';
 import logo from '../assets/logo-no-background.svg';
 
@@ -42,9 +42,9 @@ function DesktopNav() {
             ></span>
           </a>
         ) : (
-          <a
+          <Link
             key={label}
-            href={to}
+            to={to}  
             className={baseClasses}
             style={{
               color: isActive ? COLORS.primary : COLORS.textLight,
@@ -58,7 +58,7 @@ function DesktopNav() {
               }`}
               style={{ backgroundColor: COLORS.primary }}
             ></span>
-          </a>
+          </Link>
         );
       })}
     </nav>
@@ -84,7 +84,7 @@ function MobileNav({ isOpen, setIsOpen }) {
           return external ? (
             <a
               key={label}
-              href={href}
+              href={href}  
               target="_blank"
               rel="noopener noreferrer"
               className={baseClasses}
@@ -94,15 +94,15 @@ function MobileNav({ isOpen, setIsOpen }) {
               {label}
             </a>
           ) : (
-            <a
+            <Link
               key={label}
-              href={to}
+              to={to}  
               className={baseClasses}
               style={{ color: isActive ? COLORS.primary : COLORS.textLight }}
               onClick={() => setIsOpen(false)}
             >
               {label}
-            </a>
+            </Link>
           );
         })}
 
@@ -163,7 +163,7 @@ function Navbar() {
               </button>
             </div>
 
-            <a href="/" className="flex items-center text-nowrap">
+            <Link to="/" className="flex items-center text-nowrap">
               <img src={logo} alt="Logo" className="h-6 sm:h-8 md:h-10 w-auto p-1 my-1 mr-2" />
               <h1
                 className="text-lg sm:text-l md:text-xl font-sans font-semibold tracking-tight mr-10"
@@ -175,12 +175,11 @@ function Navbar() {
               >
                 Doctors On Wheels
               </h1>
-            </a>
+            </Link>
 
             <DesktopNav />
           </div>
 
-          {/* Fixed desktop buttons: added flex-nowrap and whitespace-nowrap */}
           <div className="hidden lg:flex items-center gap-3 flex-nowrap">
             <a
               href="https://example.com/donate"

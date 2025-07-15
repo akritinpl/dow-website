@@ -5,5 +5,7 @@ export const COLORS = {
   textDark: '#001F3F',
   border: '#E0E6ED',
   highlight: '#EF9394',
+  white: '#FFFFFF',
+  pageBackground: '#efebe1',
 };
 

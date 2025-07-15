@@ -1,5 +1,5 @@
 import { useState } from "react";
-//info for email 
+
 function ContactUsPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -20,7 +20,7 @@ function ContactUsPage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 mt-10">
+    <div className="max-w-3xl mx-auto p-6 pt-16 px-4">
       <h2 className="text-2xl font-semibold text-[--color-primary] mb-6">Contact Us</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input

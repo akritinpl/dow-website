@@ -1,0 +1,70 @@
+/* .about-timeline .Selecter-sc-168kw5q-2[title="Change layout"] {
+  display: none !important;
+}
+
+.about-timeline .Selecter-sc-168kw5q-2[title="Change density"] {
+  display: none !important;
+} */
+
+/* ───────────────────────────────────────────
+   react‑chrono permanent overrides
+   scope: only elements that live inside
+          ".about‑timeline" wrapper
+   ─────────────────────────────────────────── */
+
+/* 1 ▸ Hide Chrono’s layout / density selector buttons */
+.about-timeline [title="Change layout"],
+.about-timeline [title="Change density"] {
+  display: none !important;
+}
+
+/* 2 ▸ Neutralise the full‑screen overlay that blocks clicks
+       (Chrono injects it with inline “position:fixed”) */
+.about-timeline [style*="position: fixed"][style*="inset: 0"] {
+  /* keep it for keyboard shortcuts, but let clicks pass through */
+  pointer-events: none !important;
+}
+
+/* 3 ▸ Re‑enable normal interaction INSIDE the timeline box */
+.about-timeline .chrono-icons,
+.about-timeline .chrono-card,
+.about-timeline .chrono-controls,
+.about-timeline .chrono-media,
+.about-timeline .chrono-timeline * {
+  pointer-events: auto !important;
+}
+
+/* Modern interactive timeline enhancements */
+.about-timeline .chrono-card {
+  border-radius: 1rem !important;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.about-timeline .chrono-card.active, .about-timeline .chrono-card:focus {
+  box-shadow: 0 8px 32px 0 rgba(156,121,69,0.18), 0 1.5px 6px 0 rgba(0,0,0,0.08) !important;
+  transform: scale(1.06);
+  z-index: 2;
+}
+.about-timeline .chrono-card:hover {
+  box-shadow: 0 4px 16px 0 rgba(156,121,69,0.12), 0 1px 3px 0 rgba(0,0,0,0.06) !important;
+  transform: scale(1.03);
+  z-index: 1;
+}
+.about-timeline .chrono-timeline .chrono-circle.active {
+  box-shadow: 0 0 0 4px #efebe1, 0 0 0 8px #9C7945 !important;
+  background: #9C7945 !important;
+  border-color: #9C7945 !important;
+}
+
+/* Hide any top menu or control bar in Chrono timeline */
+.about-timeline .chrono-controls,
+.about-timeline [title="Change layout"],
+.about-timeline [title="Change density"],
+.about-timeline .chrono-top,
+.about-timeline .chrono-navigation {
+  display: none !important;
+}
+
+/* Hide react-chrono top toolbar */
+.about-timeline .ToolbarWrapper-sc-exupb5-0 {
+  display: none !important;
+}
