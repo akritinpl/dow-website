@@ -8,6 +8,8 @@ import Research from './pages/Research';
 import Opportunities from './pages/Opportunities';
 import Telemedicine from './pages/Telemedicine';
 import Contact from './pages/Contact';
+import Donate from './pages/Donate';
+import Blog from './pages/Blog';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
             <Route path="opportunities" element={<Opportunities />} />
             <Route path="telemedicine" element={<Telemedicine />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="blog" element={<Blog/>} />
+            <Route path="donate" element={<Donate/>} />
           </Route>
         </Routes>
     </Router>

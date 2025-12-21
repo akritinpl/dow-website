@@ -12,8 +12,8 @@ const navLinks = [
   { label: 'Research', to: '/research' },
   { label: 'Opportunities', to: '/opportunities' },
   { label: 'Telemedicine', to: '/telemedicine' },
-  { label: 'Our Blog', href: 'https://downepal.blogspot.com/', external: true },
-  { label: 'Contact Us', to: '/contact' },
+  { label: 'Our Blog', to: '/blog' } //href: 'https://downepal.blogspot.com/', external: true },
+  //{ label: 'Contact Us', to: '/contact' },
 ];
 
 // Desktop navigation menu
@@ -108,11 +108,12 @@ function MobileNav({ isOpen, setIsOpen }) {
 
         <div className="whitespace-nowrap pt-4 mt-4 border-t space-y-2" style={{ borderColor: '#E0E6ED' }}>
           <a
-            href="https://example.com/donate"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full text-center font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition-colors duration-200"
-            style={{ backgroundColor: COLORS.highlight, color: COLORS.textLight }}
+            href="/donate"
+            className="block w-full text-center font-bold px-6 py-3 rounded-lg transition-colors duration-200"
+            style={{
+              backgroundColor: COLORS.highlight,
+              color: COLORS.textLight,
+            }}
             onClick={() => setIsOpen(false)}
           >
             Donate Now
@@ -182,9 +183,7 @@ function Navbar() {
 
           <div className="hidden lg:flex items-center gap-3 flex-nowrap">
             <a
-              href="https://example.com/donate"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/donate"
               className="font-sans font-bold px-4 sm:px-5 py-2 pr-4 rounded-lg hover:opacity-90 transition-colors duration-200 whitespace-nowrap"
               style={{ backgroundColor: COLORS.highlight, color: COLORS.textLight }}
             >

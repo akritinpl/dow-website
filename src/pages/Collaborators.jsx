@@ -25,6 +25,13 @@ export const collaborators = [
     spotlight: "Researching accessible design patterns for emerging markets.",
     image: "/images/Dr.Deepak.png",
   },
+  {
+    name: "Dr. Prabal Tiwari",
+    role: "Research Officer",
+    occupation: "Research Officer",
+    spotlight: "🏆 Award-winning research from rural Nepal to the global stage ✨ When Dr. Prabal Tiwari and the team began the research on how mothers in rural Nepal understand and use Oral Rehydration Solution (ORS), his goal was simple yet profound: to save lives by empowering communities with knowledge. Fast forward to the present, and that work has been recognized on an international platform.",
+    image: "/images/Prabal.png",
+  },
 ];
 
 function CollaboratorCard({ collaborator, i }) {
@@ -101,14 +108,16 @@ function CollaboratorCard({ collaborator, i }) {
 function Collaborators() {
   return (
     <main className="min-h-screen w-full flex flex-col items-center justify-start" style={{ background: COLORS.pageBackground, fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
-      <section className="w-full max-w-5xl mx-auto pt-16 pb-8 px-4">
-        <h2 className="text-center text-3xl md:text-4xl font-extrabold mb-4" style={{ color: COLORS.primary }}>
-          Meet Our Collaborators
-        </h2>
-        <p className="text-center text-base md:text-lg mb-12 max-w-2xl mx-auto" style={{ color: COLORS.textDark, opacity: 0.85 }}>
-          Our collaborators are dedicated professionals leading research and care in their respective fields. Their expertise and passion drive our mission forward.
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <section className="w-full max-w-6xl mx-auto pt-16 pb-8 px-6 md:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-6" style={{ color: COLORS.primary }}>
+            Meet Our Collaborators
+          </h2>
+          <p className="text-xl max-w-3xl mx-auto" style={{ color: COLORS.textDark }}>
+            Our collaborators are dedicated professionals leading research and care in their respective fields. Their expertise and passion drive our mission forward.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 gap-y-16 pb-32">
           {collaborators.map((c, i) => (
             <CollaboratorCard key={c.name} collaborator={c} i={i} />
           ))}

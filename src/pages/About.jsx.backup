@@ -1,0 +1,1031 @@
+import { COLORS } from "../constants/colors";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { useLayoutEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import './chrono-overrides.css';
+import { LucideHeading2 } from "lucide-react";
+import { useLocation } from "react-router-dom";
+
+  const timeline = [
+    {
+      date: 'Jan 7, 2012',
+      title: 'Flag + Logo of DOW',
+    text: 'Logo of the Association: The logo shall contain a combination of eagle wings laterally, a wheel in the center and the snake shaft below and behind the wheel. The color shall be Red symbolizing blood and thus life. Eagle wings symbolize confidence, fearlessness, and solidarity. The wheel represents movement and ingenuity. The snake shaft denotes the medical profession.'
+    },
+    {
+      date: 'Jan 7, 2012',
+      title: 'Declaring Directors',
+      text: '1. Dinesh Duwal 2. Rohini Nepal 3. Shirish K.C. 4. Vikram Tiwari'
+    },
+    {
+      date: 'Jan 7, 2012',
+      title: 'Core Executive Board of Directors (CEBOD)',
+      text: 'Shirish K.C. - Director General\nVikram Tiwari - Director\nDinesh Duwal - Director\nRohini Nepal - Director'
+    },
+    {
+      date: 'Aug 26-27, 2012',
+      title: '1st Health and Sanitation Awareness Campaign',
+      text: 'First HASAC conducted in Barahatwa, Sarlahi, marking the beginning of DOW\'s health awareness initiatives in rural Nepal.'
+    },
+    {
+      date: 'Aug 28-29, 2012',
+      title: 'HASAC 2012 - Waling',
+      text: 'Health and Sanitation Awareness Campaign conducted in Waling, continuing DOW\'s commitment to community health education.'
+    },
+    {
+      date: '2013',
+      title: 'HASAC 2013 - Maya Universe Academy',
+      text: 'Health and Sanitation Awareness Campaign conducted at Maya Universe Academy, Chisapani, Tanahu, expanding our reach to educational institutions.'
+    },
+    {
+      date: '2015',
+      title: 'Earthquake Relief - Sindhupalchok',
+      text: 'Three-day health camp at Sindhupalchok providing emergency medical assistance following the devastating earthquake that struck Nepal.'
+    },
+    {
+      date: '2016',
+      title: 'Maya Universe Academy Health Services',
+      text: 'DOW\'s team provided comprehensive health services including blood grouping, deworming, BMI, nutritional status assessment, health science classes, and general body checkup. Team: Shirish KC, Rohini Nepal, Vikram Tiwari, Priyesh KC, Rimon MC.'
+    },
+    {
+      date: '2017',
+      title: '4th HASAC - MOU with National Hospital',
+      text: '"Ma Swastha, Mero Desh Swastha" campaign was launched by Ministry of Health of Nepal Government recently. DOW has decided to support the Ministry\'s  campaign by conducting the 4th Health and Sanitation Awareness Campaign (HASAC) in the schools and colleges of Nepal. Today DOW signed the Memorandum of Understanding with National Hospital and Cancer Research Center, Jawalakhel as a health service partner of the project. We have a target to provide the health service to 10,000+ students in a heavily subsidised rate within this fiscal. DOW Director General Shirish KC signed the MOU on behalf of Docs On Wheels with Mr. Manoj MC as a witness.' 
+    },
+    {
+      date: '2017',
+      title: '4th HASAC - 2017',
+      text: 'NCH administrator Mrs. Maya Neupane signed on behalf of National hospital and Cancer research center. 4th Health and Sanitation Awareness Campaign 2017 successfully conducted in Pushpasadan H. School, Kirtipur. Over 600 lab tests done and routine body checkup of school children were done by the team of Doctors:
+1. Dr. Debsy Prad
+2. Dr. Akriti Shrestha
+3. Dr. Swechchha Pokharel
+4. Dr. Merina Pokhrel
+Project coordinated by Dr. Shirish KC and co-executed by Mr. Rimon MC
+Sincere Thanks to our technical assistants Min and Sudikchya and our volunteers Priyesh Kc, Norden Lepcha and Dipanker.
+
+Agreement with 5 schools to conduct HASAC 2017. They are:
+1. St. Xaviers' Godavari High School
+2. St. Xavier's High School, Jawalakhel
+3. St. Xavier's College, Maitighar
+4. Pushpasadan High School
+5. Laboratory High School
+'
+    },
+    {
+      date: '2017',
+      title: 'Community Health Camp - Godavari',
+      text: 'Doctors from KIST Medical College represented DOW in the Community Health Camp at Maan Daanda of Godavari, conducted by Nepal Jesuit Society.'
+    },
+    {
+      date: 'Oct 29-31, 2017',
+      title: 'Rohingya Refugee Health Camp Wave 2',
+      text: 'DOW\'s task force (Dr. Shirish KC and Dr. Murad) partnered with Jamjam Welfare Foundation and Médecins Sans Frontières at Cox Bazar. Health camp conducted on Oct 20-21 at Ukhia Upazila refugee camp.'
+    },
+    {
+      date: '2018',
+      title: 'GAA Health Camp - Maya Universe Academy',
+      text: 'Godavari Alumni Association\'s Health Camp led by Dr. Shirish KC and team. Services: Blood grouping, BMI, ENT checkup, General medicine, Orthopedics, Psychological counseling. Made possible by GAA President Mr. Bhoo Arun Malla.'
+    },
+    {
+      date: '2018',
+      title: 'Telemedicine Installation - Maya School',
+      text: 'Successfully installed telemedicine unit in Maya School of Tanahu with exclusive support from Godavari Alumni Association. Dr. Shirish also taught senior students about medical techniques and health hygiene.'
+    },
+    {
+      date: '2018',
+      title: 'Telemedicine Installation - Syangja',
+      text: 'Health Camp in Syalbas, Syangja and telemedicine unit installation at Pidikhola Swastha Chowki. Over 500 patients checked with ultrasonography and ECG facilities available.'
+    },
+    {
+      date: '2019',
+      title: 'Telemedicine Expedition - Mustang',
+      text: 'Major telemedicine project in Parbat, Tukuche, and Lo Manthang-Mustang. Partnered with GAA, National Dental Hospital, and Gangalal cardiac team. Over 2,500 patients treated and 3 telemedicine units installed. Led by Dr. Shirish KC with Dr. Vikram Tiwari, Dr. Binod Shrestha, and Dr. Gajendra Acharya representing DOW.'
+    },
+    {
+      date: 'Feb 14, 2024',
+      title: 'Docs to Doctors: The Reorganization',
+      text: '14 Feb 2024 Nepal Registration as a Non-Profit Company.'
+    },
+    {
+      date: 'Feb 17, 2024',
+      title: "DOW's Core Areas of Focus moving forward",
+      text: '1. Public health promotion and delivery management: Health camps, telemedicine, and remote health post management. 2. Clinical Research: Promoting research among young professionals and international trials. 3. Health Volunteer and Observership: Opportunities in Nepal and the USA. 4. Fundraising: Donations, grants, and self-sustainability.'
+    },
+    {
+      date: 'Aug 24, 2024',
+      title: 'Global Health Voyages Blog Launch',
+      text: 'We are Live! Global Health Voyages, the blog from Doctors on Wheels. It\'s where we share the heart of our work: stories from the road, clinical lessons, and updates as we bring care to hard-to-reach communities. Visit us at https://globalhealthvoyages.wordpress.com/'
+    }
+
+];
+
+const About = () => {
+  const location = useLocation();
+
+  // Scroll to hash targets like #mission when arriving via deep link
+  useEffect(() => {
+    if (location.hash) {
+      const target = document.querySelector(location.hash);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else {
+      // Default to top on plain /about navigation
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+  }, [location]);
+  // Custom timeline state
+  const [selectedCardIndex, setSelectedCardIndex] = useState(0);
+  const [highlightedVerticalIndex, setHighlightedVerticalIndex] = useState(null);
+  const verticalRefs = useRef([]);
+  const dotOverlayRefs = useRef([]);
+  const scrollRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+  const verticalTimelineContainerRef = useRef(null);
+  const [dotPositions, setDotPositions] = useState([]);
+  const [dateLabelPositions, setDateLabelPositions] = useState([]);
+  // Show both horizontal (collapsed) and vertical (expanded) timelines
+  const [timelineOpen, setTimelineOpen] = useState(false);
+  
+  // Slideshow state
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Sample images for the mission section (you can replace these with actual images)
+  const missionImages = [
+    "/images/contact_nepal.jpg",
+    "/images/Dr.Bikash.png",
+    "/images/Dr.Deepak.png",
+    "/images/Dr.Purushottam.png"
+  ];
+
+  // Auto-advance slideshow
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === missionImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 6000); // Change image every 6 seconds
+
+    return () => clearInterval(interval);
+  }, [missionImages.length]);
+
+  // Manual navigation functions
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === missionImages.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? missionImages.length - 1 : prevIndex - 1
+    );
+  };
+
+  // --- Scroll-to-select and slideshow animation state ---
+  const prevCardIndexRef = useRef(selectedCardIndex);
+  const prevScrollLeftRef = useRef(0);
+  const [slideDirection, setSlideDirection] = useState('right');
+
+  // --- Seamless pointer/touch/scroll/keyboard selection ---
+  const [pointerActive, setPointerActive] = useState(false);
+
+  // Throttle helper
+  function throttle(fn, wait) {
+    let last = 0;
+    let timeout;
+    return (...args) => {
+      const now = Date.now();
+      if (now - last >= wait) {
+        last = now;
+        fn(...args);
+      } else {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          last = Date.now();
+          fn(...args);
+        }, wait - (now - last));
+      }
+    };
+  }
+
+  const handlePointerMove = useCallback(throttle((e) => {
+    if (!pointerActive || !scrollRef.current) return;
+    const container = scrollRef.current;
+    const dots = Array.from(container.querySelectorAll('.timeline-dot'));
+    if (!dots.length) return;
+    let clientX;
+    if (e.touches && e.touches.length > 0) {
+      clientX = e.touches[0].clientX;
+    } else {
+      clientX = e.clientX;
+    }
+    let minDist = Infinity;
+    let closestIdx = 0;
+    dots.forEach((dot, idx) => {
+      const dotRect = dot.getBoundingClientRect();
+      const dotCenter = dotRect.left + dotRect.width / 2;
+      const dist = Math.abs(dotCenter - clientX);
+      if (dist < minDist) {
+        minDist = dist;
+        closestIdx = idx;
+      }
+    });
+    if (closestIdx !== selectedCardIndex) {
+      setSelectedCardIndex(closestIdx);
+      setSlideDirection(closestIdx > prevCardIndexRef.current ? 'right' : 'left');
+      prevCardIndexRef.current = closestIdx;
+    }
+  }, 32), [pointerActive, selectedCardIndex]);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    // Pointer events
+    const onPointerEnter = () => setPointerActive(true);
+    const onPointerLeave = () => setPointerActive(false);
+    const onPointerDown = () => setPointerActive(true);
+    const onPointerUp = () => setPointerActive(false);
+    el.addEventListener('mouseenter', onPointerEnter);
+    el.addEventListener('mouseleave', onPointerLeave);
+    el.addEventListener('mousedown', onPointerDown);
+    el.addEventListener('mouseup', onPointerUp);
+    el.addEventListener('touchstart', onPointerDown);
+    el.addEventListener('touchend', onPointerUp);
+    el.addEventListener('mousemove', handlePointerMove);
+    el.addEventListener('touchmove', handlePointerMove);
+    return () => {
+      el.removeEventListener('mouseenter', onPointerEnter);
+      el.removeEventListener('mouseleave', onPointerLeave);
+      el.removeEventListener('mousedown', onPointerDown);
+      el.removeEventListener('mouseup', onPointerUp);
+      el.removeEventListener('touchstart', onPointerDown);
+      el.removeEventListener('touchend', onPointerUp);
+      el.removeEventListener('mousemove', handlePointerMove);
+      el.removeEventListener('touchmove', handlePointerMove);
+    };
+  }, [handlePointerMove]);
+
+  // Keyboard navigation for accessibility
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!scrollRef.current || !scrollRef.current.contains(document.activeElement)) return;
+      if (e.key === 'ArrowRight') {
+        setSelectedCardIndex(idx => Math.min(idx + 1, timeline.length - 1));
+        setSlideDirection('right');
+      } else if (e.key === 'ArrowLeft') {
+        setSelectedCardIndex(idx => Math.max(idx - 1, 0));
+        setSlideDirection('left');
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [timeline.length]);
+
+  // Only use scroll-to-select when pointer is not active
+  useEffect(() => {
+    if (pointerActive) return;
+    const handleScroll = () => {
+      if (!scrollRef.current) return;
+      const container = scrollRef.current;
+      const dots = Array.from(container.querySelectorAll('.timeline-dot'));
+      if (!dots.length) return;
+      const containerRect = container.getBoundingClientRect();
+      const centerX = containerRect.left + containerRect.width / 2;
+      let minDist = Infinity;
+      let closestIdx = 0;
+      dots.forEach((dot, idx) => {
+        const dotRect = dot.getBoundingClientRect();
+        const dotCenter = dotRect.left + dotRect.width / 2;
+        const dist = Math.abs(dotCenter - centerX);
+        if (dist < minDist) {
+          minDist = dist;
+          closestIdx = idx;
+        }
+      });
+      if (closestIdx !== selectedCardIndex) {
+        setSelectedCardIndex(closestIdx);
+        setSlideDirection(closestIdx > prevCardIndexRef.current ? 'right' : 'left');
+        prevCardIndexRef.current = closestIdx;
+      }
+      prevScrollLeftRef.current = container.scrollLeft;
+    };
+    const el = scrollRef.current;
+    if (el) el.addEventListener('scroll', handleScroll, { passive: true });
+    return () => { if (el) el.removeEventListener('scroll', handleScroll); };
+  }, [pointerActive, selectedCardIndex]);
+
+  const chronoItems = timeline.map(event => ({
+    title: event.date,
+    cardTitle: event.title,
+    cardDetailedText: event.text,
+  }));
+
+  // Check scrollability for arrows
+  useEffect(() => {
+    const checkScroll = () => {
+      const el = scrollRef.current;
+      if (!el) return;
+      setCanScrollLeft(el.scrollLeft > 0);
+      setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
+    };
+    checkScroll();
+    if (scrollRef.current) {
+      scrollRef.current.addEventListener('scroll', checkScroll);
+      window.addEventListener('resize', checkScroll);
+    }
+    return () => {
+      if (scrollRef.current) {
+        scrollRef.current.removeEventListener('scroll', checkScroll);
+      }
+      window.removeEventListener('resize', checkScroll);
+    };
+  }, []);
+
+  // Scroll to and highlight vertical timeline event when horizontal event is clicked (when expanded)
+  useEffect(() => {
+    if (timelineOpen && highlightedVerticalIndex !== null && verticalRefs.current[highlightedVerticalIndex]) {
+      verticalRefs.current[highlightedVerticalIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [highlightedVerticalIndex, timelineOpen]);
+
+  // Clear highlight when collapsing
+  useEffect(() => {
+    if (!timelineOpen) setHighlightedVerticalIndex(null);
+  }, [timelineOpen]);
+
+  // Ensure the timeline card never appears in expanded view
+  useEffect(() => {
+    if (timelineOpen && selectedCardIndex !== null) {
+      setSelectedCardIndex(null);
+    }
+  }, [timelineOpen]);
+
+  // Scroll-to-select logic
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!scrollRef.current) return;
+      const container = scrollRef.current;
+      const dots = Array.from(container.querySelectorAll('.timeline-dot'));
+      if (!dots.length) return;
+      const containerRect = container.getBoundingClientRect();
+      const centerX = containerRect.left + containerRect.width / 2;
+      let minDist = Infinity;
+      let closestIdx = 0;
+      dots.forEach((dot, idx) => {
+        const dotRect = dot.getBoundingClientRect();
+        const dotCenter = dotRect.left + dotRect.width / 2;
+        const dist = Math.abs(dotCenter - centerX);
+        if (dist < minDist) {
+          minDist = dist;
+          closestIdx = idx;
+        }
+      });
+      if (closestIdx !== selectedCardIndex) {
+        setSelectedCardIndex(closestIdx);
+        // Determine direction
+        setSlideDirection(closestIdx > prevCardIndexRef.current ? 'right' : 'left');
+        prevCardIndexRef.current = closestIdx;
+      }
+      // Track scroll direction for animation speed (optional)
+      prevScrollLeftRef.current = container.scrollLeft;
+    };
+    const el = scrollRef.current;
+    if (el) el.addEventListener('scroll', handleScroll, { passive: true });
+    return () => { if (el) el.removeEventListener('scroll', handleScroll); };
+  }, [selectedCardIndex]);
+
+
+
+  // Pixel-perfect overlay alignment: update overlay positions after Chrono renders
+  useEffect(() => {
+    if (!timelineOpen) return;
+    // Wait for Chrono to render
+    setTimeout(() => {
+      const container = document.querySelector('.about-timeline');
+      if (!container) return;
+      // Try to find Chrono's dot elements (class may need to be updated if Chrono changes)
+      const dots = container.querySelectorAll('.chrono-icons, .chrono-circle, .chrono-timeline-circle, .chrono-dot, .chrono-horizontal-circle');
+      // Fallback: try to find all buttons inside the timeline (Chrono dots are usually buttons)
+      const dotButtons = container.querySelectorAll('button.timeline-circle');
+      let positions = [];
+      if (dotButtons.length === chronoItems.length) {
+        dotButtons.forEach(dot => {
+          const dotRect = dot.getBoundingClientRect();
+          const containerRect = container.getBoundingClientRect();
+          positions.push({
+            left: dotRect.left - containerRect.left + dotRect.width / 2,
+            top: dotRect.top - containerRect.top + dotRect.height / 2,
+          });
+        });
+      }
+      setDotPositions(positions);
+    }, 100);
+  }, [timelineOpen, chronoItems.length]);
+
+  // Pixel-perfect overlay alignment for date labels
+  useEffect(() => {
+    if (!timelineOpen) return;
+    setTimeout(() => {
+      const container = document.querySelector('.about-timeline');
+      if (!container) return;
+      // Find all date labels (try to select by class or tag)
+      const dateLabels = container.querySelectorAll('.timeline-item-title, .rc-title, .TitleWrapper-sc-13izrht-0');
+      let positions = [];
+      if (dateLabels.length === chronoItems.length) {
+        dateLabels.forEach(label => {
+          const labelRect = label.getBoundingClientRect();
+          const containerRect = container.getBoundingClientRect();
+          positions.push({
+            left: labelRect.left - containerRect.left + labelRect.width / 2,
+            top: labelRect.top - containerRect.top + labelRect.height / 2,
+            width: labelRect.width,
+            height: labelRect.height,
+          });
+        });
+      }
+      setDateLabelPositions(positions);
+    }, 100);
+  }, [timelineOpen, chronoItems.length]);
+
+  const scrollByAmount = 320;
+  const handleScrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -scrollByAmount, behavior: 'smooth' });
+    }
+  };
+  const handleScrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: scrollByAmount, behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <main className="min-h-screen" style={{ backgroundColor: COLORS.pageBackground }}>
+      {/* About Us Section */}
+      <section id="mission" className="w-full max-w-6xl mx-auto pt-16 pb-8 px-6 md:px-8">
+        
+        {/* Mission Content */}
+        <div className="mb-20">
+          <div className="grid lg:grid-cols-2 gap-20 items-start">
+            <div className="space-y-8 pr-2 pt-8">
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-6" style={{ color: COLORS.primary }}>
+                Our Mission
+              </h2>
+              <p className="text-lg leading-relaxed" style={{ color: COLORS.textDark }}>
+                Since our founding, we have worked to bridge the healthcare gap in remote regions, promote research, and create opportunities for collaboration and learning — both in Nepal and abroad.
+              </p>
+              <p className="text-lg leading-relaxed" style={{ color: COLORS.textDark }}>
+                Our commitment extends beyond immediate healthcare needs to building lasting partnerships and empowering communities to take charge of their health and well-being.
+              </p>
+            </div>
+            
+            <div className="relative mt-8 px-4 md:px-0 md:-mr-8">
+              {/* Slideshow Container */}
+              <div className="relative w-full aspect-[3/2] overflow-hidden shadow-xl rounded-lg scale-105">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={currentImageIndex}
+                    src={missionImages[currentImageIndex]}
+                    alt={`DOW Mission ${currentImageIndex + 1}`}
+                    className="w-full h-full object-cover"
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 1.2, ease: "easeInOut" }}
+                    onError={(e) => {
+                      console.log('Image failed to load:', missionImages[currentImageIndex]);
+                      e.target.style.opacity = '0.5';
+                    }}
+                  />
+                </AnimatePresence>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                
+                {/* Navigation Arrows */}
+                <button
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/30 hover:bg-black/50 text-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm"
+                  aria-label="Previous image"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/30 hover:bg-black/50 text-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm"
+                  aria-label="Next image"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+                
+                {/* Dots Indicator */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                  {missionImages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                        index === currentImageIndex 
+                          ? 'bg-white scale-125' 
+                          : 'bg-white/50 hover:bg-white/75'
+                      }`}
+                      aria-label={`Go to image ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+              
+              {/* Enhanced floating accent elements */}
+              <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-primary/15 to-primary/05 rounded-full blur-2xl"></div>
+              <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-gradient-to-tr from-highlight/20 to-highlight/10 rounded-full blur-xl"></div>
+              <div className="absolute top-1/2 -left-4 w-16 h-16 bg-gradient-to-r from-primary/10 to-highlight/10 rounded-full blur-lg"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Founding Team Section - Clean Grid */}
+      <section id="founding" className="w-full py-20 md:py-28" style={{ 
+        background: `linear-gradient(135deg, ${COLORS.highlight}15 0%, ${COLORS.primary}10 50%, ${COLORS.highlight}12 100%)` 
+      }}>
+        <div className="max-w-6xl mx-auto px-6 md:px-8">
+          <div className="text-center mb-16">
+            <h2 
+              className="text-4xl md:text-5xl font-extrabold mb-6"
+              style={{ color: COLORS.primary }}
+            >
+              Founding Team
+            </h2>
+            <p className="text-xl max-w-2xl mx-auto" style={{ color: COLORS.textDark }}>
+              Meet the visionary leaders who established DOW and continue to drive our mission forward with dedication and expertise.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Shirish K.C. - Director General */}
+            <div className="bg-white rounded-lg shadow-sm p-8 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden" style={{ border: `1px solid ${COLORS.border}` }}>
+              <div className="absolute top-0 left-0 w-full h-1" style={{ background: `linear-gradient(90deg, ${COLORS.primary} 0%, ${COLORS.primary}99 100%)` }}></div>
+              <div className="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center shadow-sm" style={{ backgroundColor: `${COLORS.primary}15` }}>
+                <svg className="w-12 h-12" fill="none" stroke={COLORS.primary} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-2" style={{ color: COLORS.primary }}>Shirish K.C.</h3>
+              <p className="text-sm font-semibold mb-4" style={{ color: COLORS.textDark }}>Director General</p>
+              <p className="text-sm leading-relaxed" style={{ color: COLORS.textDark }}>
+                Leading DOW's strategic vision and operational excellence in healthcare delivery.
+              </p>
+            </div>
+
+            {/* Vikram Tiwari - Director */}
+            <div className="bg-white rounded-lg shadow-sm p-8 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden" style={{ border: `1px solid ${COLORS.border}` }}>
+              <div className="absolute top-0 left-0 w-full h-1" style={{ background: `linear-gradient(90deg, ${COLORS.primary} 0%, ${COLORS.primary}99 100%)` }}></div>
+              <div className="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center shadow-sm" style={{ backgroundColor: `${COLORS.primary}15` }}>
+                <svg className="w-12 h-12" fill="none" stroke={COLORS.primary} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-2" style={{ color: COLORS.primary }}>Vikram Tiwari</h3>
+              <p className="text-sm font-semibold mb-4" style={{ color: COLORS.textDark }}>Director</p>
+              <p className="text-sm leading-relaxed" style={{ color: COLORS.textDark }}>
+                Overseeing program development and community engagement initiatives.
+              </p>
+            </div>
+
+            {/* Dinesh Duwal - Director */}
+            <div className="bg-white rounded-lg shadow-sm p-8 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden" style={{ border: `1px solid ${COLORS.border}` }}>
+              <div className="absolute top-0 left-0 w-full h-1" style={{ background: `linear-gradient(90deg, ${COLORS.primary} 0%, ${COLORS.primary}99 100%)` }}></div>
+              <div className="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center shadow-sm" style={{ backgroundColor: `${COLORS.primary}15` }}>
+                <svg className="w-12 h-12" fill="none" stroke={COLORS.primary} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-2" style={{ color: COLORS.primary }}>Dinesh Duwal</h3>
+              <p className="text-sm font-semibold mb-4" style={{ color: COLORS.textDark }}>Director</p>
+              <p className="text-sm leading-relaxed" style={{ color: COLORS.textDark }}>
+                Managing financial operations and strategic partnerships for sustainable growth.
+              </p>
+            </div>
+
+            {/* Rohini Nepal - Director */}
+            <div className="bg-white rounded-lg shadow-sm p-8 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden" style={{ border: `1px solid ${COLORS.border}` }}>
+              <div className="absolute top-0 left-0 w-full h-1" style={{ background: `linear-gradient(90deg, ${COLORS.primary} 0%, ${COLORS.primary}99 100%)` }}></div>
+              <div className="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center shadow-sm" style={{ backgroundColor: `${COLORS.primary}15` }}>
+                <svg className="w-12 h-12" fill="none" stroke={COLORS.primary} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-2" style={{ color: COLORS.primary }}>Rohini Nepal</h3>
+              <p className="text-sm font-semibold mb-4" style={{ color: COLORS.textDark }}>Director</p>
+              <p className="text-sm leading-relaxed" style={{ color: COLORS.textDark }}>
+                Driving research initiatives and educational programs for healthcare professionals.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Timeline Section - Clean Layout */}
+      <section className="w-full py-20 md:py-28 relative overflow-hidden" style={{ 
+        backgroundColor: COLORS.pageBackground
+      }}>
+        
+        <div className="max-w-6xl mx-auto px-6 md:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <h2 
+              className="text-4xl md:text-5xl font-extrabold mb-6"
+              style={{ color: COLORS.primary }}
+            >
+              Our Journey
+            </h2>
+            <p className="text-xl max-w-2xl mx-auto" style={{ color: COLORS.textDark }}>
+              Explore the key milestones and achievements that have shaped DOW's mission to improve healthcare in rural Nepal.
+            </p>
+          </div>
+
+          {/* Timeline Component */}
+          <div
+            className="max-w-4xl w-full bg-white rounded-lg shadow-sm flex flex-col mx-auto p-8 md:p-12"
+            style={{
+              height: timelineOpen ? 'auto' : 'clamp(320px, 65vh, 520px)',
+              minHeight: '260px',
+              maxHeight: timelineOpen ? undefined : '98vh',
+              boxSizing: 'border-box',
+              fontFamily: 'Inter, Poppins, Segoe UI, Arial, sans-serif',
+              border: `1px solid ${COLORS.border}`,
+            }}
+          >
+            {/* Title and Controls Row */}
+            <div className="flex items-center justify-between mb-8">
+              <h3 className="text-2xl font-bold" style={{ color: COLORS.primary }}>Timeline</h3>
+              {/* Toggle button for timeline view */}
+              <button
+                className="flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-150 bg-white hover:bg-gray-50 focus:outline-none"
+                style={{ borderColor: COLORS.primary, color: COLORS.primary }}
+                onClick={() => setTimelineOpen((open) => !open)}
+                aria-expanded={timelineOpen}
+                aria-label={timelineOpen ? 'Collapse Timeline' : 'Expand Timeline'}
+              >
+                {!timelineOpen ? (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                ) : (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 15l7-7 7 7" /></svg>
+                )}
+              </button>
+            </div>
+            
+            {/* Custom horizontal timeline (collapsed view) */}
+            {(!timelineOpen || timelineOpen) && (
+              <>
+                <div className="flex-1 flex flex-col w-full min-h-0">
+                  <div
+                    className={`relative w-full${timelineOpen ? ' mb-4' : ''}`}
+                    style={{
+                      flex: '0 0 auto',
+                      paddingTop: 'clamp(16px, 4vw, 32px)',
+                      paddingBottom: timelineOpen ? '0' : 'clamp(12px, 3vw, 24px)',
+                      background: '#ffff',
+                    }}>
+                    <div className="overflow-x-auto about-timeline-scroll" ref={scrollRef} style={{ width: '100%', height: '100%', touchAction: 'pan-x', WebkitOverflowScrolling: 'touch' }}>
+                      <div style={{ minWidth: `${timeline.length * 320}px`, width: 'max-content', display: 'flex', alignItems: 'flex-start', position: 'relative' }}>
+                        {/* Horizontal line behind the dots */}
+                        <div
+                          style={{
+                            position: 'absolute',
+                            top: 10,
+                            left: 0,
+                            right: 0,
+                            height: 2,
+                            background: COLORS.border,
+                            zIndex: 1,
+                          }}
+                        />
+                        {timeline.map((event, idx) => (
+                          <div
+                            key={idx}
+                            className="timeline-dot"
+                            style={{ flex: '0 0 80px', display: 'flex', flexDirection: 'column', alignItems: 'center', cursor: 'pointer', scrollSnapAlign: 'center', marginRight: idx < timeline.length - 1 ? 32 : 0, position: 'relative', zIndex: 2 }}
+                            onClick={() => {
+                              setSelectedCardIndex(idx);
+                              if (timelineOpen && verticalRefs.current[idx]) {
+                                verticalRefs.current[idx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                setHighlightedVerticalIndex(idx);
+                              }
+                            }}
+                            onMouseEnter={() => setSelectedCardIndex(idx)}
+                            onTouchStart={() => setSelectedCardIndex(idx)}
+                          >
+                            <div
+                              style={{
+                                width: 16,
+                                height: 16,
+                                borderRadius: '50%',
+                                background: idx === selectedCardIndex ? COLORS.primary : COLORS.border,
+                                border: `2px solid ${idx === selectedCardIndex ? COLORS.primary : COLORS.border}`,
+                                marginBottom: 8,
+                                transition: 'all 0.2s',
+                              }}
+                            />
+                            <span
+                              style={{
+                                fontWeight: idx === selectedCardIndex ? 600 : 400,
+                                color: idx === selectedCardIndex ? COLORS.primary : COLORS.textDark,
+                                fontSize: 14,
+                                textAlign: 'center',
+                                minWidth: 60,
+                              }}
+                            >
+                              {event.date}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Custom card fills available space and is vertically scrollable */}
+                  {!timelineOpen && (
+                    <AnimatePresence mode="wait">
+                      {timeline[selectedCardIndex] && (
+                        <motion.div
+                          key={selectedCardIndex}
+                          className="w-full flex justify-center flex-1 min-h-0 mt-4 flex-col items-center"
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.95 }}
+                          transition={{ duration: 0.3, ease: [0.4, 0.2, 0.2, 1] }}
+                        >
+                          <div
+                            className="relative rounded-lg p-6 md:p-8 flex-1 min-h-0 flex flex-col w-full max-w-xl mx-auto overflow-y-auto"
+                            style={{
+                              width: 'min(100%, 600px)',
+                              maxWidth: '99vw',
+                              fontSize: 'clamp(0.95rem, 1.2vw, 1.08rem)',
+                              fontFamily: 'inherit',
+                              background: COLORS.pageBackground,
+                              border: `1px solid ${COLORS.border}`,
+                            }}
+                          >
+                            <h3
+                              className="font-bold mb-4 text-lg tracking-tight"
+                              style={{ color: COLORS.primary, letterSpacing: '-0.01em', fontFamily: 'inherit' }}
+                            >
+                              {timeline[selectedCardIndex].title}
+                            </h3>
+                            <p
+                              className="whitespace-pre-line leading-relaxed"
+                              style={{ color: COLORS.textDark, wordBreak: 'break-word', whiteSpace: 'pre-line', fontFamily: 'inherit' }}
+                            >
+                              {timeline[selectedCardIndex].text}
+                            </p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
+                </div>
+                
+                {/* Arrow Controls for Horizontal Timeline */}
+                {!timelineOpen && (
+                  <div className="flex justify-center gap-4 mt-8">
+                    <button
+                      className="flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-150 bg-white hover:bg-gray-50 focus:outline-none"
+                      style={{ borderColor: COLORS.primary, color: COLORS.primary }}
+                      onClick={() => {
+                        setSelectedCardIndex(idx => {
+                          const newIdx = Math.max(idx - 1, 0);
+                          const dot = scrollRef.current?.querySelectorAll('.timeline-dot')[newIdx];
+                          if (dot) dot.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                          return newIdx;
+                        });
+                      }}
+                      aria-label="Scroll Left"
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" /></svg>
+                    </button>
+                    <button
+                      className="flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-150 bg-white hover:bg-gray-50 focus:outline-none"
+                      style={{ borderColor: COLORS.primary, color: COLORS.primary }}
+                      onClick={() => {
+                        setSelectedCardIndex(idx => {
+                          const newIdx = Math.min(idx + 1, timeline.length - 1);
+                          const dot = scrollRef.current?.querySelectorAll('.timeline-dot')[newIdx];
+                          if (dot) dot.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                          return newIdx;
+                        });
+                      }}
+                      aria-label="Scroll Right"
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
+            
+            {/* Vertical timeline (expanded view) */}
+            {timelineOpen && (
+              <>
+                <div className="mb-8" />
+                <div ref={verticalTimelineContainerRef} className="relative rounded-lg border overflow-y-auto" style={{ maxHeight: '60vh', minHeight: '220px', scrollBehavior: 'smooth', borderColor: COLORS.border, backgroundColor: COLORS.white }}>
+                  <ol className="relative pl-8 pr-6 py-6">
+                    {timeline.map((item, idx) => (
+                      <li
+                        key={idx}
+                        ref={el => verticalRefs.current[idx] = el}
+                        className={
+                          `mb-8 relative transition-all duration-200 rounded-lg cursor-pointer p-4 ` +
+                          (highlightedVerticalIndex === idx
+                            ? 'ring-2 border'
+                            : 'hover:bg-gray-50')
+                        }
+                        style={{
+                          ringColor: highlightedVerticalIndex === idx ? `${COLORS.primary}20` : 'transparent',
+                          borderColor: highlightedVerticalIndex === idx ? COLORS.primary : 'transparent',
+                          backgroundColor: highlightedVerticalIndex === idx ? `${COLORS.primary}10` : 'transparent',
+                        }}
+                        onClick={() => setHighlightedVerticalIndex(prev => prev === idx ? null : idx)}
+                      >
+                        <div className="absolute w-3 h-3 bg-white border-2 rounded-full -left-6 top-6" style={{ borderColor: COLORS.primary }}></div>
+                        <span className="text-sm font-semibold uppercase tracking-wide" style={{ color: COLORS.primary }}>{item.date}</span>
+                        <h3 className="text-lg font-bold mt-1 mb-2" style={{ color: COLORS.primary }}>{item.title}</h3>
+                        <p style={{ color: COLORS.textDark }} className="whitespace-pre-line">{item.text}</p>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      </section>
+      
+      {/* The Great Pivot of 2024 Section */}
+      <section className="w-full py-16 md:py-20 relative overflow-hidden" style={{ 
+        backgroundColor: COLORS.textDark,
+        backgroundImage: `
+          radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 50%),
+          linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.03) 50%, transparent 60%),
+          linear-gradient(-45deg, transparent 30%, rgba(255,255,255,0.02) 50%, transparent 70%)
+        `
+      }}>
+        {/* Geometric overlay elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-10 left-10 w-20 h-20 border border-white opacity-10 transform rotate-45"></div>
+          <div className="absolute top-20 right-20 w-16 h-16 border border-white opacity-10 transform -rotate-12"></div>
+          <div className="absolute bottom-20 left-1/4 w-12 h-12 border border-white opacity-10 transform rotate-30"></div>
+          <div className="absolute bottom-10 right-1/3 w-24 h-24 border border-white opacity-10 transform -rotate-45"></div>
+          <div className="absolute top-1/2 left-10 w-8 h-8 bg-white opacity-5 transform rotate-90"></div>
+          <div className="absolute top-1/3 right-10 w-6 h-6 bg-white opacity-5 transform -rotate-45"></div>
+        </div>
+        
+        <div className="max-w-6xl mx-auto px-6 md:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-block mb-8">
+              <div className="w-16 h-1 mx-auto mb-4" style={{ backgroundColor: COLORS.primary }}></div>
+            </div>
+            <h2 
+              className="text-5xl md:text-7xl lg:text-8xl font-black"
+              style={{ 
+                color: COLORS.white,
+                textShadow: '0 6px 12px rgba(0,0,0,0.5), 0 3px 6px rgba(0,0,0,0.4)',
+                letterSpacing: '0.02em',
+                fontFamily: '"Playfair Display", "Times New Roman", Georgia, serif',
+                fontWeight: '900',
+                lineHeight: '1.1',
+                textTransform: 'uppercase'
+              }}
+            >
+              The Great<br />Pivot of 2024
+            </h2>
+            <div className="inline-block mt-8">
+              <div className="w-16 h-1 mx-auto" style={{ backgroundColor: COLORS.primary }}></div>
+            </div>
+          </div>
+          
+          {/* Content Section - Professional Layout */}
+          <div className="max-w-5xl mx-auto">
+            <div className="space-y-8">
+                {/* Founding Section */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ delay: 0.1, duration: 0.6 }}
+                >
+                  <div className="space-y-4" style={{ color: '#9CA3AF' }}>
+                    <p className="text-xl leading-relaxed max-w-6xl" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                      On January 1st, 2012, four medical students founded Docs on Wheels. This page is a testament to all of DOW's public health promotion work done to date.
+                      DOW was primarily focused on health camps and telemedicine unit setups in remote locations, partnering with other organizations in all instances. However, we are now reorganizing and adding value.
+                    </p>
+                  </div>
+                </motion.div>
+
+                                {/* Newspaper Columns Section */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ delay: 0.2, duration: 0.6 }}
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* Left Column - Focus Areas */}
+                    <div className="space-y-4">
+                      <h3 className="text-2xl font-bold mb-6" style={{
+                        color: COLORS.primary,
+                        fontFamily: 'Faustina'
+                      }}>
+                        New Focus Areas
+                      </h3>
+                      <p className="text-lg leading-relaxed mb-6" style={{ color: '#9CA3AF', fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                        Our core focus going forward will be:
+                      </p>
+                      <div className="space-y-4">
+                        <div className="flex items-start space-x-3">
+                          <div className="w-2 h-2 rounded-full mt-3 flex-shrink-0" style={{ backgroundColor: COLORS.primary }}></div>
+                          <span className="text-lg leading-relaxed" style={{ color: '#9CA3AF', fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                            Public health promotion and delivery management
+                          </span>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <div className="w-2 h-2 rounded-full mt-3 flex-shrink-0" style={{ backgroundColor: COLORS.primary }}></div>
+                          <span className="text-lg leading-relaxed" style={{ color: '#9CA3AF', fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                            Clinical Research
+                          </span>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <div className="w-2 h-2 rounded-full mt-3 flex-shrink-0" style={{ backgroundColor: COLORS.primary }}></div>
+                          <span className="text-lg leading-relaxed" style={{ color: '#9CA3AF', fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                            Health Volunteer and observership in Nepal and the USA
+                          </span>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <div className="w-2 h-2 rounded-full mt-3 flex-shrink-0" style={{ backgroundColor: COLORS.primary }}></div>
+                          <span className="text-lg leading-relaxed" style={{ color: '#9CA3AF', fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                            Fundraising
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right Column - Registration & Future */}
+                    <div className="space-y-4">
+                      <h3 className="text-2xl font-bold mb-6" style={{
+                        color: COLORS.primary,
+                        fontFamily: 'Faustina'
+                      }}>
+                        Registration & Future
+                      </h3>
+                      <div className="space-y-4" style={{ color: '#9CA3AF' }}>
+                        <p className="text-lg leading-relaxed" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                          To achieve this, we successfully registered DOW with a slightly modified name of "Doctors on Wheels" and with the above objectives in Nepal as a non-profit company on 14 February 2024.
+                        </p>
+                        <p className="text-lg leading-relaxed" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                          The registration process in the USA is also going in full swing. In the coming days, we will update our logos and branding and call for volunteers and applications for various positions. Stay tuned!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                                {/* Signature Quote */}
+                <motion.div
+                  className="text-center pt-8 border-t-2"
+                  style={{ borderColor: COLORS.primary }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                >
+                  <p className="text-3xl font-bold tracking-wide" style={{
+                    color: COLORS.primary,
+                    fontFamily: 'Faustina',
+                    letterSpacing: '0.03em',
+                    fontStyle: 'italic'
+                  }}>
+                    As always, On the Move, For the Community!
+                  </p>
+                </motion.div>
+               </div>
+             </div>
+        </div>
+      </section>
+      
+      {/* Responsive tweaks for extra small screens */}
+      <style>{`
+        @media (max-width: 480px) {
+          .about-timeline-scroll { min-width: 0 !important; }
+          .about-timeline-scroll > div { min-width: 0 !important; }
+        }
+      `}</style>
+    </main>
+  );
+};
+
+export default About;
+
