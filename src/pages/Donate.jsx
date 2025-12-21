@@ -292,9 +292,9 @@ function Donate() {
           transition={{ duration: 0.6 }}
         >
           <div className="relative">
-            {/* Heart Icon - Positioned to the left */}
+            {/* Heart Icon - Centered on mobile, left on larger screens */}
             <motion.div
-              className="absolute left-0 top-0 flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl shadow-xl"
+              className="absolute left-1/2 -translate-x-1/2 -top-8 sm:left-8 sm:top-0 sm:translate-x-0 flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl shadow-xl"
               style={{ background: `linear-gradient(135deg, ${COLORS.highlight}, ${COLORS.highlight}dd)` }}
               initial={{ scale: 0, rotate: -180 }}
               whileInView={{ scale: 1, rotate: 0 }}
@@ -306,9 +306,9 @@ function Donate() {
             </motion.div>
 
             {/* Centered Content */}
-            <div className="text-center px-4">
+            <div className="text-center px-4 sm:px-6 md:px-8 pt-8 sm:pt-0">
               <motion.h3
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 sm:mb-6"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-5 md:mb-6"
                 style={{ color: COLORS.primary }}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}

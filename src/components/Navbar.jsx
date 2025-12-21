@@ -113,6 +113,7 @@ function MobileNav({ isOpen, setIsOpen }) {
             style={{
               backgroundColor: COLORS.highlight,
               color: COLORS.textLight,
+              fontFamily: 'Lora, serif',
             }}
             onClick={() => setIsOpen(false)}
           >
@@ -125,6 +126,7 @@ function MobileNav({ isOpen, setIsOpen }) {
               backgroundColor: COLORS.textLight,
               borderColor: COLORS.textLight,
               color: COLORS.textDark,
+              fontFamily: 'Lora, serif',
             }}
             onClick={() => setIsOpen(false)}
           >
@@ -165,7 +167,17 @@ function Navbar() {
             </div>
 
             <Link to="/" className="flex items-center text-nowrap">
-              <img src={logo} alt="Logo" className="h-6 sm:h-8 md:h-10 w-auto p-1 my-1 mr-2" />
+              <img
+                src={logo}
+                alt="Logo"
+                className="h-6 sm:h-8 md:h-10 w-auto p-1 my-1 mr-2"
+                style={{
+                  imageRendering: 'crisp-edges',
+                  WebkitFontSmoothing: 'antialiased',
+                  backfaceVisibility: 'hidden',
+                  transform: 'translateZ(0)'
+                }}
+              />
               <h1
                 className="text-lg sm:text-l md:text-xl font-sans font-semibold tracking-tight mr-10"
                 style={{
@@ -184,18 +196,19 @@ function Navbar() {
           <div className="hidden lg:flex items-center gap-3 flex-nowrap">
             <a
               href="/donate"
-              className="font-sans font-bold px-4 sm:px-5 py-2 pr-4 rounded-lg hover:opacity-90 transition-colors duration-200 whitespace-nowrap"
-              style={{ backgroundColor: COLORS.highlight, color: COLORS.textLight }}
+              className="font-bold px-4 sm:px-5 py-2 pr-4 rounded-lg hover:opacity-90 transition-colors duration-200 whitespace-nowrap"
+              style={{ backgroundColor: COLORS.highlight, color: COLORS.textLight, fontFamily: 'Lora, serif' }}
             >
               Donate Now
             </a>
 
             <a
               href="/signin"
-              className="border font-sans font-medium px-4 py-1.5 rounded-lg hover:bg-white transition-colors duration-200 whitespace-nowrap"
+              className="border font-medium px-4 py-1.5 rounded-lg hover:bg-white transition-colors duration-200 whitespace-nowrap"
               style={{
                 color: COLORS.textLight,
                 borderColor: '#E0E6ED',
+                fontFamily: 'Lora, serif',
               }}
             >
               Sign In

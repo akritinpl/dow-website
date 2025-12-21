@@ -467,13 +467,13 @@ const About = () => {
   return (
     <main className="min-h-screen" style={{ backgroundColor: COLORS.pageBackground }}>
       {/* About Us Section */}
-      <section id="mission" className="w-full max-w-6xl mx-auto pt-16 pb-8 px-6 md:px-8">
+      <section id="mission" className="w-full max-w-6xl mx-auto pt-16 pb-8 px-8 md:px-10 lg:px-12">
         
         {/* Mission Content */}
         <div className="mb-20">
           <div className="grid lg:grid-cols-2 gap-20 items-start">
             <div className="space-y-8 pr-2 pt-8">
-              <h2 className="text-4xl md:text-5xl font-extrabold mb-6" style={{ color: COLORS.primary }}>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-5 md:mb-6" style={{ color: COLORS.primary }}>
                 Our Mission
               </h2>
               <p className="text-lg leading-relaxed" style={{ color: COLORS.textDark }}>
@@ -486,7 +486,7 @@ const About = () => {
             
             <div className="relative mt-8 px-4 md:px-0 md:-mr-8">
               {/* Slideshow Container */}
-              <div className="relative w-full aspect-[3/2] overflow-hidden shadow-xl rounded-lg scale-105">
+              <div className="relative w-full aspect-[4/3] sm:aspect-[3/2] overflow-hidden shadow-xl rounded-lg scale-100 md:scale-105">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={currentImageIndex}
@@ -556,10 +556,10 @@ const About = () => {
       <section id="founding" className="w-full py-20 md:py-28" style={{ 
         background: `linear-gradient(135deg, ${COLORS.highlight}15 0%, ${COLORS.primary}10 50%, ${COLORS.highlight}12 100%)` 
       }}>
-        <div className="max-w-6xl mx-auto px-6 md:px-8">
+        <div className="max-w-6xl mx-auto px-8 md:px-10 lg:px-12">
           <div className="text-center mb-16">
-            <h2 
-              className="text-4xl md:text-5xl font-extrabold mb-6"
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-5 md:mb-6"
               style={{ color: COLORS.primary }}
             >
               Founding Team
@@ -638,10 +638,10 @@ const About = () => {
         backgroundColor: COLORS.pageBackground
       }}>
         
-        <div className="max-w-6xl mx-auto px-6 md:px-8 relative z-10">
+        <div className="max-w-6xl mx-auto px-8 md:px-10 lg:px-12 relative z-10">
           <div className="text-center mb-16">
-            <h2 
-              className="text-4xl md:text-5xl font-extrabold mb-6"
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-5 md:mb-6"
               style={{ color: COLORS.primary }}
             >
               Our Journey
@@ -659,7 +659,7 @@ const About = () => {
               minHeight: '260px',
               maxHeight: timelineOpen ? undefined : '98vh',
               boxSizing: 'border-box',
-              fontFamily: 'Inter, Poppins, Segoe UI, Arial, sans-serif',
+              fontFamily: 'Lora, serif',
               border: `1px solid ${COLORS.border}`,
             }}
           >
@@ -888,7 +888,7 @@ const About = () => {
           <div className="absolute top-1/3 right-10 w-6 h-6 bg-white opacity-5 transform -rotate-45"></div>
         </div>
         
-        <div className="max-w-6xl mx-auto px-6 md:px-8 relative z-10">
+        <div className="max-w-6xl mx-auto px-8 md:px-10 lg:px-12 relative z-10">
           <div className="text-center mb-16">
             <div className="inline-block mb-8">
               <div className="w-16 h-1 mx-auto mb-4" style={{ backgroundColor: COLORS.primary }}></div>
@@ -899,7 +899,7 @@ const About = () => {
                 color: COLORS.white,
                 textShadow: '0 6px 12px rgba(0,0,0,0.5), 0 3px 6px rgba(0,0,0,0.4)',
                 letterSpacing: '0.02em',
-                fontFamily: '"Playfair Display", "Times New Roman", Georgia, serif',
+                fontFamily: 'Lora, serif',
                 fontWeight: '900',
                 lineHeight: '1.1',
                 textTransform: 'uppercase'
@@ -923,7 +923,7 @@ const About = () => {
                   transition={{ delay: 0.1, duration: 0.6 }}
                 >
                   <div className="space-y-4" style={{ color: '#9CA3AF' }}>
-                    <p className="text-xl leading-relaxed max-w-6xl" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                    <p className="text-xl leading-relaxed max-w-6xl" style={{ fontFamily: 'Lora, serif' }}>
                       On January 1st, 2012, four medical students founded Docs on Wheels. This page is a testament to all of DOW's public health promotion work done to date.
                       DOW was primarily focused on health camps and telemedicine unit setups in remote locations, partnering with other organizations in all instances. However, we are now reorganizing and adding value.
                     </p>
@@ -942,35 +942,35 @@ const About = () => {
                     <div className="space-y-4">
                       <h3 className="text-2xl font-bold mb-6" style={{
                         color: COLORS.primary,
-                        fontFamily: 'Faustina'
+                        fontFamily: 'Lora'
                       }}>
                         New Focus Areas
                       </h3>
-                      <p className="text-lg leading-relaxed mb-6" style={{ color: '#9CA3AF', fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                      <p className="text-lg leading-relaxed mb-6" style={{ color: '#9CA3AF', fontFamily: 'Lora, serif' }}>
                         Our core focus going forward will be:
                       </p>
                       <div className="space-y-4">
                         <div className="flex items-start space-x-3">
                           <div className="w-2 h-2 rounded-full mt-3 flex-shrink-0" style={{ backgroundColor: COLORS.primary }}></div>
-                          <span className="text-lg leading-relaxed" style={{ color: '#9CA3AF', fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                          <span className="text-lg leading-relaxed" style={{ color: '#9CA3AF', fontFamily: 'Lora, serif' }}>
                             Public health promotion and delivery management
                           </span>
                         </div>
                         <div className="flex items-start space-x-3">
                           <div className="w-2 h-2 rounded-full mt-3 flex-shrink-0" style={{ backgroundColor: COLORS.primary }}></div>
-                          <span className="text-lg leading-relaxed" style={{ color: '#9CA3AF', fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                          <span className="text-lg leading-relaxed" style={{ color: '#9CA3AF', fontFamily: 'Lora, serif' }}>
                             Clinical Research
                           </span>
                         </div>
                         <div className="flex items-start space-x-3">
                           <div className="w-2 h-2 rounded-full mt-3 flex-shrink-0" style={{ backgroundColor: COLORS.primary }}></div>
-                          <span className="text-lg leading-relaxed" style={{ color: '#9CA3AF', fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                          <span className="text-lg leading-relaxed" style={{ color: '#9CA3AF', fontFamily: 'Lora, serif' }}>
                             Health Volunteer and observership in Nepal and the USA
                           </span>
                         </div>
                         <div className="flex items-start space-x-3">
                           <div className="w-2 h-2 rounded-full mt-3 flex-shrink-0" style={{ backgroundColor: COLORS.primary }}></div>
-                          <span className="text-lg leading-relaxed" style={{ color: '#9CA3AF', fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                          <span className="text-lg leading-relaxed" style={{ color: '#9CA3AF', fontFamily: 'Lora, serif' }}>
                             Fundraising
                           </span>
                         </div>
@@ -981,15 +981,15 @@ const About = () => {
                     <div className="space-y-4">
                       <h3 className="text-2xl font-bold mb-6" style={{
                         color: COLORS.primary,
-                        fontFamily: 'Faustina'
+                        fontFamily: 'Lora'
                       }}>
                         Registration & Future
                       </h3>
                       <div className="space-y-4" style={{ color: '#9CA3AF' }}>
-                        <p className="text-lg leading-relaxed" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                        <p className="text-lg leading-relaxed" style={{ fontFamily: 'Lora, serif' }}>
                           To achieve this, we successfully registered DOW with a slightly modified name of "Doctors on Wheels" and with the above objectives in Nepal as a non-profit company on 14 February 2024.
                         </p>
-                        <p className="text-lg leading-relaxed" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                        <p className="text-lg leading-relaxed" style={{ fontFamily: 'Lora, serif' }}>
                           The registration process in the USA is also going in full swing. In the coming days, we will update our logos and branding and call for volunteers and applications for various positions. Stay tuned!
                         </p>
                       </div>
@@ -1008,7 +1008,7 @@ const About = () => {
                 >
                   <p className="text-3xl font-bold tracking-wide" style={{
                     color: COLORS.primary,
-                    fontFamily: 'Faustina',
+                    fontFamily: 'Lora',
                     letterSpacing: '0.03em',
                     fontStyle: 'italic'
                   }}>

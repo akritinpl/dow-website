@@ -51,7 +51,7 @@ function Home() {
         
         <motion.h2
           className="text-5xl md:text-6xl font-extrabold mb-6 relative z-10"
-          style={{ color: COLORS.textLight, fontFamily: 'Faustina' }}
+          style={{ color: COLORS.textLight, fontFamily: 'Lora' }}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
@@ -61,7 +61,7 @@ function Home() {
         
         <motion.p
           className="text-lg md:text-2xl mb-2 mt-5 max-w-3xl mx-auto leading-relaxed relative z-10"
-          style={{ color: '#9CA3AF', opacity: 0.9, fontFamily: 'Inter, system-ui, -apple-system, sans-serif', fontWeight: '700' }}
+          style={{ color: '#9CA3AF', opacity: 0.9, fontFamily: 'Lora, serif', fontWeight: '700' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.7 }}
@@ -70,7 +70,7 @@ function Home() {
           </motion.p>
         <motion.p
         className="text-l md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed relative z-10"
-        style={{ color: '#9CA3AF', opacity: 0.9, fontFamily: 'Inter, system-ui, -apple-system, sans-serif', fontWeight: '200' }}
+        style={{ color: '#9CA3AF', opacity: 0.9, fontFamily: 'Lora, serif', fontWeight: '200' }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.7 }}
@@ -134,7 +134,7 @@ function Home() {
             >
               <h2 
                 className="text-3xl md:text-4xl font-bold mb-6"
-                style={{ color: COLORS.primary, fontFamily: 'Faustina' }}
+                style={{ color: COLORS.primary, fontFamily: 'Lora' }}
               >
                 Our Work
               </h2>
@@ -159,7 +159,7 @@ function Home() {
                 }}
               >
                 <div className="bg-white rounded-xl shadow-md overflow-hidden w-full transition-transform duration-200 hover:-translate-y-2 hover:shadow-lg mb-4">
-                  <div className="h-72 w-full overflow-hidden relative">
+                  <div className="h-56 sm:h-64 md:h-72 w-full overflow-hidden relative">
                     <img
                       src={f.image}
                       alt={f.title}
@@ -171,7 +171,7 @@ function Home() {
                 {/* Text Content Below Card */}
                 <div className="px-2">
                   <h3 className="text-lg font-bold mb-2" style={{ color: COLORS.primary }}>{f.title}</h3>
-                  <p className="text-gray-700 text-base" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>{f.text}</p>
+                  <p className="text-gray-700 text-base" style={{ fontFamily: 'Lora, serif' }}>{f.text}</p>
                 </div>
               </motion.div>
             ))}
@@ -199,7 +199,7 @@ function Home() {
             >
               <h2
                 className="text-3xl md:text-4xl font-bold mb-6"
-                style={{ color: COLORS.primary, fontFamily: 'Faustina' }}
+                style={{ color: COLORS.primary, fontFamily: 'Lora' }}
               >
                 Past Projects
               </h2>
@@ -221,13 +221,13 @@ function Home() {
                 transition={{ delay: 0.1, duration: 0.6 }}
               >
                 <h4 className="text-2xl font-bold mb-4" style={{ color: COLORS.textDark }}>1st HASAC 2012 - Barahatwa, Sarlahi</h4>
-                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Lora, serif' }}>
                   Health and Sanitation Awareness Campaign conducted from August 26-27, 2012 in Barahatwa, Sarlahi
                 </p>
                 {/* Image Gallery */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                   {[1, 2, 3].map((num) => (
-                    <div key={num} className="h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
+                    <div key={num} className="h-48 sm:h-56 md:h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
                       <img
                         src={`/images/HASAC-${num}.png`}
                         alt={`HASAC 2012 Barahatwa ${num}`}
@@ -253,13 +253,13 @@ function Home() {
                 transition={{ delay: 0.2, duration: 0.6 }}
               >
                 <h4 className="text-2xl font-bold mb-4" style={{ color: COLORS.textDark }}>HASAC 2012 - Waling</h4>
-                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Lora, serif' }}>
                   Health and Sanitation Awareness Campaign conducted from August 28-29, 2012 in Waling
                 </p>
                 {/* Image Gallery */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                   {[1, 2].map((num) => (
-                    <div key={num} className="h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
+                    <div key={num} className="h-48 sm:h-56 md:h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
                       <img
                         src={`/images/Waling-${num}.png`}
                         alt={`Waling 2012 ${num}`}
@@ -285,13 +285,13 @@ function Home() {
                 transition={{ delay: 0.3, duration: 0.6 }}
               >
                 <h4 className="text-2xl font-bold mb-4" style={{ color: COLORS.textDark }}>HASAC 2013 - Maya Universe Academy</h4>
-                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Lora, serif' }}>
                   Health and Sanitation Awareness Campaign conducted at Maya Universe Academy, Chisapani, Tanahu
                 </p>
                 {/* Image Gallery */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                   {[1, 2, 3].map((num) => (
-                    <div key={num} className="h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
+                    <div key={num} className="h-48 sm:h-56 md:h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
                       <img
                         src={`/images/Maya-${num}.png`}
                         alt={`Maya Universe Academy ${num}`}
@@ -317,13 +317,13 @@ function Home() {
                 transition={{ delay: 0.4, duration: 0.6 }}
               >
                 <h4 className="text-2xl font-bold mb-4" style={{ color: COLORS.textDark }}>4th HASAC 2017 - Multiple Schools</h4>
-                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Lora, serif' }}>
                   Over 600 lab tests and routine body checkups conducted at Pushpasadan H. School, Kirtipur. Agreement signed with 5 schools including St. Xavier's Godavari, St. Xavier's Jawalakhel, and Laboratory High School
                 </p>
                 {/* Image Gallery */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                   {[0, 1, 2].map((num) => (
-                    <div key={num} className="h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
+                    <div key={num} className="h-48 sm:h-56 md:h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
                       <img
                         src={`/images/2017-${num}.png`}
                         alt={`HASAC 2017 ${num}`}
@@ -357,13 +357,13 @@ function Home() {
                 transition={{ delay: 0.1, duration: 0.6 }}
               >
                 <h4 className="text-2xl font-bold mb-4" style={{ color: COLORS.textDark }}>Earthquake Relief Camp 2015</h4>
-                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Lora, serif' }}>
                   Three-day health camp at Sindhupalchok providing emergency medical assistance following the devastating earthquake
                 </p>
                 {/* Image Gallery */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                   {[1, 2, 3].map((num) => (
-                    <div key={num} className="h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
+                    <div key={num} className="h-48 sm:h-56 md:h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
                       <img
                         src={`/images/Rahat-${num}.png`}
                         alt={`Earthquake Relief ${num}`}
@@ -389,13 +389,13 @@ function Home() {
                 transition={{ delay: 0.2, duration: 0.6 }}
               >
                 <h4 className="text-2xl font-bold mb-4" style={{ color: COLORS.textDark }}>Maya Universe Academy Health Camp</h4>
-                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Lora, serif' }}>
                   Comprehensive health services including blood grouping, deworming, BMI, nutritional status assessment, and health science classes
                 </p>
                 {/* Image Gallery */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                   {[1, 2, 3].map((num) => (
-                    <div key={num} className="h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
+                    <div key={num} className="h-48 sm:h-56 md:h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
                       <img
                         src={`/images/Mayav2-${num}.png`}
                         alt={`Maya Health Camp ${num}`}
@@ -421,13 +421,13 @@ function Home() {
                 transition={{ delay: 0.3, duration: 0.6 }}
               >
                 <h4 className="text-2xl font-bold mb-4" style={{ color: COLORS.textDark }}>Rohingya Refugee Health Camp 2017</h4>
-                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Lora, serif' }}>
                   Wave 2 health camp (Oct 29-31, 2017) at Cox Bazar, partnering with Médecins Sans Frontières and Jamjam Welfare Foundation
                 </p>
                 {/* Image Gallery */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                   {[1, 2, 3].map((num) => (
-                    <div key={num} className="h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
+                    <div key={num} className="h-48 sm:h-56 md:h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
                       <img
                         src={`/images/Ro-${num}.png`}
                         alt={`Rohingya Camp ${num}`}
@@ -453,13 +453,13 @@ function Home() {
                 transition={{ delay: 0.4, duration: 0.6 }}
               >
                 <h4 className="text-2xl font-bold mb-4" style={{ color: COLORS.textDark }}>GAA Health Camp - Maya School</h4>
-                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Lora, serif' }}>
                   Led by Dr. Shirish KC with Godavari Alumni Association, providing blood grouping, BMI, ENT checkups, general medicine, orthopedics, and psychological counseling
                 </p>
                 {/* Image Gallery */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                   {[1, 2, 3].map((num) => (
-                    <div key={num} className="h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
+                    <div key={num} className="h-48 sm:h-56 md:h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
                       <img
                         src={`/images/GAA-${num}.png`}
                         alt={`GAA Health Camp ${num}`}
@@ -485,13 +485,13 @@ function Home() {
                 transition={{ delay: 0.5, duration: 0.6 }}
               >
                 <h4 className="text-2xl font-bold mb-4" style={{ color: COLORS.textDark }}>Community Health Camp - Godavari</h4>
-                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Lora, serif' }}>
                   Doctors from KIST Medical College represented DOW in the community health camp at Maan Daanda of Godavari, conducted by Nepal Jesuit Society
                 </p>
                 {/* Image Gallery */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                   {[1, 2].map((num) => (
-                    <div key={num} className="h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
+                    <div key={num} className="h-48 sm:h-56 md:h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
                       <img
                         src={`/images/KIST-${num}.png`}
                         alt={`KIST Camp ${num}`}
@@ -517,13 +517,13 @@ function Home() {
                 transition={{ delay: 0.6, duration: 0.6 }}
               >
                 <h4 className="text-2xl font-bold mb-4" style={{ color: COLORS.textDark }}>Syalbas Health Camp - Syangja</h4>
-                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                <p className="text-gray-700 mb-4" style={{ fontFamily: 'Lora, serif' }}>
                   Over 500 patients checked with ultrasonography and ECG facilities available. Telemedicine unit installed at Pidikhola Swastha Chowki
                 </p>
                 {/* Image Gallery */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                   {[1, 2, 3].map((num) => (
-                    <div key={num} className="h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
+                    <div key={num} className="h-48 sm:h-56 md:h-64 bg-gradient-to-br overflow-hidden rounded-lg" style={{ backgroundColor: `${COLORS.primary}10` }}>
                       <img
                         src={`/images/TeleSyangja-${num}.png`}
                         alt={`Syangja Camp ${num}`}

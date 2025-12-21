@@ -43,7 +43,7 @@ function Telemedicine() {
   return (
     <main className="min-h-screen w-full flex flex-col items-center justify-start" style={{ background: COLORS.pageBackground }}>
       {/* Hero Section */}
-      <section className="w-full max-w-6xl mx-auto pt-12 md:pt-16 pb-6 md:pb-8 px-4 sm:px-6 md:px-8">
+      <section className="w-full max-w-6xl mx-auto pt-12 md:pt-16 pb-6 md:pb-8 px-4 sm:px-8 md:px-10 lg:px-12">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6 px-2" style={{ color: COLORS.primary }}>
             Telemedicine
@@ -55,7 +55,7 @@ function Telemedicine() {
       </section>
 
       {/* Introduction Section */}
-      <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 md:px-8 pb-12 md:pb-16">
+      <section className="w-full max-w-5xl mx-auto px-4 sm:px-8 md:px-10 lg:px-12 pb-12 md:pb-16">
         <motion.div
           className="bg-white rounded-xl shadow-md p-6 sm:p-8 md:p-12"
           style={{ border: `1px solid ${COLORS.border}` }}
@@ -75,7 +75,7 @@ function Telemedicine() {
             </h3>
           </div>
 
-          <div className="space-y-4 text-gray-700 leading-relaxed" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+          <div className="space-y-4 text-gray-700 leading-relaxed" style={{ fontFamily: 'Lora, serif' }}>
             <p className="text-base sm:text-lg">
               Telemedicine is the practice of caring for patients remotely when the provider and patient are not physically present with each other. It uses modern telecommunications technology to deliver healthcare services across distances, breaking down geographical barriers to medical care.
             </p>
@@ -160,7 +160,7 @@ function Telemedicine() {
 
       {/* Our Locations Section */}
       <section className="w-full py-12 md:py-16" style={{ backgroundColor: COLORS.white }}>
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+        <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 sm:px-8 md:px-10 lg:px-12">
           <motion.div
             className="text-center mb-10 md:mb-12"
             initial={{ opacity: 0, y: -20 }}
@@ -168,7 +168,7 @@ function Telemedicine() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4 px-2" style={{ color: COLORS.primary, fontFamily: 'Faustina' }}>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4 px-2" style={{ color: COLORS.primary, fontFamily: 'Lora' }}>
               Our Telemedicine Centers
             </h3>
             <p className="text-base sm:text-lg max-w-2xl mx-auto px-2" style={{ color: COLORS.textDark }}>
@@ -320,7 +320,7 @@ function Telemedicine() {
 
                   {/* Location Info */}
                   <div className="p-4 sm:p-6">
-                    <h4 className="text-xl sm:text-2xl font-bold mb-2" style={{ color: COLORS.primary, fontFamily: 'Faustina' }}>
+                    <h4 className="text-xl sm:text-2xl font-bold mb-2" style={{ color: COLORS.primary, fontFamily: 'Lora' }}>
                       {location.name}
                     </h4>
                     <div className="flex items-center gap-2 mb-3 sm:mb-4">
@@ -330,7 +330,7 @@ function Telemedicine() {
                       </svg>
                       <span className="text-xs sm:text-sm font-medium text-gray-600">{location.region}</span>
                     </div>
-                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed" style={{ fontFamily: 'Lora, serif' }}>
                       {location.description}
                     </p>
                   </div>
@@ -343,14 +343,14 @@ function Telemedicine() {
 
       {/* CTA Section */}
       <section className="w-full py-12 md:py-16" style={{ backgroundColor: COLORS.pageBackground }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-8 md:px-10 lg:px-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6 px-2" style={{ color: COLORS.primary, fontFamily: 'Faustina' }}>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6 px-2" style={{ color: COLORS.primary, fontFamily: 'Lora' }}>
               Expanding Healthcare Access
             </h3>
             <p className="text-base sm:text-lg mb-6 md:mb-8 max-w-xl mx-auto px-3" style={{ color: COLORS.textDark }}>

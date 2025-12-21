@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 function Research() {
   return(
     <main className="min-h-screen w-full flex flex-col items-center justify-start" style={{ background: COLORS.pageBackground }}>
-      <section className="w-full max-w-6xl mx-auto pt-16 pb-8 px-6 md:px-8">
+      <section className="w-full max-w-6xl mx-auto pt-16 pb-8 px-8 md:px-10 lg:px-12">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6" style={{ color: COLORS.primary }}>
             Research
@@ -21,7 +21,7 @@ function Research() {
             boxShadow: 'inset 0 1px 0 rgba(0,0,0,0.04), inset 0 -1px 0 rgba(0,0,0,0.04)'
           }}
         >
-          <div className="max-w-6xl mx-auto px-6 md:px-8">
+          <div className="max-w-6xl mx-auto px-8 md:px-10 lg:px-12">
             <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl border shadow p-6 sm:p-8"
               style={{ borderColor: COLORS.border }}
             >
@@ -73,9 +73,9 @@ function Research() {
         </div>
 
         {/* Publications Section */}
-        <div className="w-full max-w-6xl mx-auto px-6 md:px-8 pb-16">
+        <div className="w-full max-w-6xl mx-auto px-8 md:px-10 lg:px-12 pb-16">
           <div className="mb-12">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: COLORS.primary, fontFamily: 'Faustina' }}>
+            <h3 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: COLORS.primary, fontFamily: 'Lora' }}>
               Publications
             </h3>
             <div className="w-16 h-1 rounded-full" style={{ backgroundColor: COLORS.primary }}></div>
@@ -101,7 +101,7 @@ function Research() {
                   <h4 className="text-xl md:text-2xl font-bold mb-2" style={{ color: COLORS.primary }}>
                     DOW's First Case Report in Elsevier - Unique Dengue Case
                   </h4>
-                  <p className="text-gray-700 mb-4" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                  <p className="text-gray-700 mb-4" style={{ fontFamily: 'Lora, serif' }}>
                     Excited to publish DOW's first case report in Elsevier - a unique case of a Dengue patient. Great work by Dr Bikash Khadka and the team at Nepal Mediciti Hospital.
                   </p>
                   <a
@@ -139,7 +139,7 @@ function Research() {
                   <h4 className="text-xl md:text-2xl font-bold mb-2" style={{ color: COLORS.primary }}>
                     Failure of Fiberoptic Intubation Case Report
                   </h4>
-                  <p className="text-gray-700 mb-4" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                  <p className="text-gray-700 mb-4" style={{ fontFamily: 'Lora, serif' }}>
                     We recently published a case report on failure of Fiberoptic Intubation - which is the gold standard technique during difficult airway management. An interesting read. All credit to Dr Bikash Khadka, Dr Kushal Pradhan and team from Nepal Mediciti.
                   </p>
                   <a
@@ -177,7 +177,7 @@ function Research() {
                   <h4 className="text-xl md:text-2xl font-bold mb-2" style={{ color: COLORS.primary }}>
                       BRASH Syndrome - Case Study Published
                   </h4>
-                  <p className="text-gray-700 mb-4" style={{ fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+                  <p className="text-gray-700 mb-4" style={{ fontFamily: 'Lora, serif' }}>
                     Another case study published! Thanks to Dr Bikash Khadka and the team at Nepal Mediciti.
                   </p>
                   <a

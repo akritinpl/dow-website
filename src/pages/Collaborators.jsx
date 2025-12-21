@@ -67,12 +67,12 @@ function CollaboratorCard({ collaborator, i }) {
           </div>
           {/* Name + role: 25% of card height */}
           <div className="flex-auto h-[25%] flex flex-col justify-center items-center px-3 py-2 bg-white" style={{ borderBottomLeftRadius: '1rem', borderBottomRightRadius: '1rem' }}>
-            <h3 className="text-xs sm:text-sm font-semibold text-center leading-tight break-words" style={{ color: COLORS.primary }}>{collaborator.name}</h3>
-            <p className="text-[10px] sm:text-xs text-center mt-1 break-words" style={{ color: COLORS.textDark }}>{collaborator.role}</p>
+            <h3 className="text-sm sm:text-base font-semibold text-center leading-tight break-words" style={{ color: COLORS.primary }}>{collaborator.name}</h3>
+            <p className="text-xs sm:text-sm text-center mt-1 break-words" style={{ color: COLORS.textDark }}>{collaborator.role}</p>
           </div>
         </div>
         {/* BACK */}
-        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-start p-4 bg-white overflow-y-auto overflow-x-hidden" style={{ borderRadius: '1rem', fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
+        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-start p-4 bg-white overflow-y-auto overflow-x-hidden" style={{ borderRadius: '1rem', fontFamily: 'Lora, serif' }}>
           <img
             src={collaborator.image}
             alt={collaborator.name}
@@ -88,7 +88,7 @@ function CollaboratorCard({ collaborator, i }) {
                 <span
                   className="text-xs text-gray-800 w-full break-words whitespace-pre-line font-sans"
                   style={{
-                    fontFamily: 'Inter, Roboto, Segoe UI, Helvetica Neue, Arial, sans-serif',
+                    fontFamily: 'Lora, serif',
                     fontWeight: 500,
                     letterSpacing: '0.01em',
                     lineHeight: 1.6,
@@ -107,8 +107,8 @@ function CollaboratorCard({ collaborator, i }) {
 
 function Collaborators() {
   return (
-    <main className="min-h-screen w-full flex flex-col items-center justify-start" style={{ background: COLORS.pageBackground, fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
-      <section className="w-full max-w-6xl mx-auto pt-16 pb-8 px-6 md:px-8">
+    <main className="min-h-screen w-full flex flex-col items-center justify-start" style={{ background: COLORS.pageBackground, fontFamily: 'Lora, serif' }}>
+      <section className="w-full max-w-6xl mx-auto pt-16 pb-8 px-8 md:px-10 lg:px-12">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6" style={{ color: COLORS.primary }}>
             Meet Our Collaborators

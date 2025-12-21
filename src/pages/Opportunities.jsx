@@ -50,7 +50,7 @@ function Opportunities() {
   return (
     <main className="min-h-screen w-full flex flex-col items-center justify-start" style={{ background: COLORS.pageBackground }}>
       {/* Hero Section */}
-      <section className="w-full max-w-6xl mx-auto pt-16 pb-8 px-6 md:px-8">
+      <section className="w-full max-w-6xl mx-auto pt-16 pb-8 px-8 md:px-10 lg:px-12">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6" style={{ color: COLORS.primary }}>
             Opportunities
@@ -62,7 +62,7 @@ function Opportunities() {
       </section>
 
       {/* Opportunities Cards */}
-      <section className="w-full max-w-6xl mx-auto px-6 md:px-8 pb-20">
+      <section className="w-full max-w-6xl mx-auto px-8 md:px-10 lg:px-12 pb-20">
         <div className="space-y-12">
           {opportunities.map((opportunity, idx) => (
             <motion.div
@@ -74,7 +74,7 @@ function Opportunities() {
             >
               {/* Section Header */}
               <div className="mb-8">
-                <h3 className="text-3xl md:text-4xl font-bold mb-2" style={{ color: COLORS.primary, fontFamily: 'Faustina' }}>
+                <h3 className="text-3xl md:text-4xl font-bold mb-2" style={{ color: COLORS.primary, fontFamily: 'Lora' }}>
                   {opportunity.title}
                 </h3>
                 <p className="text-lg" style={{ color: COLORS.textDark, opacity: 0.8 }}>
@@ -133,14 +133,14 @@ function Opportunities() {
           <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full" style={{ backgroundColor: COLORS.highlight }}></div>
         </div>
 
-        <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
+        <div className="max-w-4xl mx-auto px-8 md:px-10 lg:px-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: COLORS.white, fontFamily: 'Faustina' }}>
+            <h3 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: COLORS.white, fontFamily: 'Lora' }}>
               Interested in Learning More?
             </h3>
             <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto" style={{ color: COLORS.textLight, opacity: 0.9 }}>
