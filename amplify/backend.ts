@@ -20,7 +20,7 @@ const backend = defineBackend({
 backend.sendContactEmail.resources.lambda.addFunctionUrl({
   authType: "NONE", // Public access - consider using AWS_IAM for production
   cors: {
-    allowedOrigins: ["*"], // Update with your domain in production
+    allowedOrigins: ["https://downepal.com", "https://www.downepal.com"],
     allowedMethods: ["POST"],
     allowedHeaders: ["*"],
   },

@@ -38,11 +38,11 @@ function Home() {
           {/* Background image */}
           <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
             backgroundImage: `url('/images/bg.jpg')`,
-            opacity: 0.15
+            opacity: 0.35
           }}></div>
-          
+
           {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/60"></div>
           
           {/* Subtle background accent */}
           <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl"></div>
@@ -50,57 +50,42 @@ function Home() {
         </div>
         
         <motion.h2
-          className="text-5xl md:text-6xl font-extrabold mb-6 relative z-10"
-          style={{ color: COLORS.textLight, fontFamily: 'Faustina' }}
+          className="text-5xl md:text-6xl font-extrabold mb-5 relative z-10 max-w-3xl mx-auto leading-tight"
+          style={{ color: '#EDF0F5', fontFamily: "'Playfair Display', Georgia, serif" }}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ delay: 0.15, duration: 0.7 }}
         >
           On the Move, For the Community!
         </motion.h2>
-        
+
+        {/* Accent line */}
+        <motion.div
+          className="relative z-10 mb-6"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ delay: 0.5, duration: 0.5, ease: 'easeOut' }}
+          style={{ originX: 0.5 }}
+        >
+          <div className="w-16 h-[3px] mx-auto rounded-full" style={{ backgroundColor: COLORS.primary }}></div>
+        </motion.div>
+
         <motion.p
-          className="text-lg md:text-2xl mb-2 mt-5 max-w-3xl mx-auto leading-relaxed relative z-10"
-          style={{ color: '#9CA3AF', opacity: 0.9, fontFamily: 'Inter, system-ui, -apple-system, sans-serif', fontWeight: '700' }}
+          className="text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed relative z-10"
+          style={{ color: '#CDD3DE', fontFamily: 'Inter, system-ui, -apple-system, sans-serif', fontWeight: '400' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.7 }}
+          transition={{ delay: 0.65, duration: 0.7 }}
         >
-          Bridging local impact with global collaboration         
-          </motion.p>
-        <motion.p
-        className="text-l md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed relative z-10"
-        style={{ color: '#9CA3AF', opacity: 0.9, fontFamily: 'Inter, system-ui, -apple-system, sans-serif', fontWeight: '200' }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.7 }}
-        >
-        Empowering Nepali communities through mobile healthcare, telemedicine, and research-driven innovation        
+          Empowering Nepali communities through mobile healthcare, telemedicine, and research-driven innovation
         </motion.p>
-        
-        <motion.a
-          href="/about#mission"
-          className="inline-block px-8 py-3 rounded-lg font-semibold text-base md:text-lg transition-colors duration-200 shadow-md relative"
-          style={{ backgroundColor: COLORS.primary, color: COLORS.white }}
-          whileHover={{ scale: 1.06, backgroundColor: COLORS.highlight }}
-          whileTap={{ scale: 0.98 }}
-          animate={{
-            boxShadow: [
-              `0 0 0 0 ${COLORS.primary}55`,
-              `0 0 0 8px ${COLORS.primary}22`,
-              `0 0 0 0 ${COLORS.primary}55`
-            ]
-          }}
-          transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-        >
-          Learn More
-        </motion.a>
+      
         {/* Animated Scroll Down Indicator */}
         <motion.div
-          className="mt-10 flex flex-col items-center"
+          className="mt-32 flex flex-col items-center"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.7 }}
+          transition={{ delay: 1.2, duration: 0.7 }}
         >
           <span className="text-xs text-gray-200 mb-1" style={{ letterSpacing: 2 }}>SCROLL</span>
           <motion.svg
