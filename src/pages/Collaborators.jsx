@@ -8,28 +8,29 @@ export const collaborators = [
     role: "Lead Investigator – Critical Care",
     occupation: "Consultant Anesthesiologist",
     spotlight:
-      "With a deep commitment to evidence‑based practice and equitable access to quality perioperative care, Dr. Khadka leads our critical care research initiatives with unmatched expertise and compassion.\nHe is passionate about mentoring young clinicians and fostering a collaborative research environment.\njhvhjkvbdgjfeiuhrjfderhuigfkjnjdsnfirbfgeiuhfiuerfwrbfkrfnjknckjsncwemfioerjfiuerhyuergtuyergbtyebvjdnvkajnirejiugerhigthreuyitgeribavnefpore",
+      "With a deep commitment to evidence‑based practice and equitable access to quality perioperative care, Dr. Khadka leads our critical care research initiatives with unmatched expertise and compassion.\nHe is passionate about mentoring young clinicians and fostering a collaborative research environment.",
     image: "/images/Dr.Bikash.png",
   },
   {
     name: "Dr. Purushottam Adhikari",
     role: "Lead Investigator - Mental Health",
     occupation: "Consultant Psychiatrist",
-    spotlight: "Championing agile best‑practices and cross‑team collaboration.",
+    spotlight: 
+      "Dr. Purushottam Adhikari is an experienced psychiatrist, researcher, and public health contributor, recognized with multiple prestigious awards. \nCurrently leading a DOW research initiative on elderly mental well-being in Nepal, with approval from the Nepal Health Research Council (NHRC).\nHeading groundbreaking projects, including Nepal’s first ketamine study in psychiatry and a clinical trial for treatment-resistant depression now enrolling participants.",
     image: "/images/Dr.Purushottam.png",
   },
   {
     name: "Dr. Deepak Sundar Shrestha",
     role: "Lead Investigator - Palliative Care",
     occupation: "Associate Professor - Internal Medicine and Palliative Care",
-    spotlight: "Researching accessible design patterns for emerging markets.",
+    spotlight: "Dr. Shrestha is an associate professor with 10+ years of clinical and academic experience, focused on compassionate, holistic care.\nLeading DOW research on palliative care and elderly well-being in Nepal, approved by the Nepal Health Research Council (NHRC).\nDriving improvements in end-of-life care and elder support systems through leadership and expertise",
     image: "/images/Dr.Deepak.png",
   },
   {
     name: "Dr. Prabal Tiwari",
     role: "Research Officer",
     occupation: "Research Officer",
-    spotlight: "🏆 Award-winning research from rural Nepal to the global stage ✨ When Dr. Prabal Tiwari and the team began the research on how mothers in rural Nepal understand and use Oral Rehydration Solution (ORS), his goal was simple yet profound: to save lives by empowering communities with knowledge. Fast forward to the present, and that work has been recognized on an international platform.",
+    spotlight: "Dr. Prabal Tiwari is a Research Officer whose award-winning work has advanced from rural Nepal to global recognition.\nLed impactful research on mothers’ understanding and use of Oral Rehydration Solution (ORS) in rural Nepal, aiming to save lives through community education",
     image: "/images/Prabal.png",
   },
 ];
